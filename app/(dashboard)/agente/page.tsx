@@ -28,7 +28,7 @@ export default function AgentePage() {
 
     // Realtime subscription
     const channel = supabase.channel("messages-realtime")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, (payload) => {
+.on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, (payload: any) => {
         const newMsg = payload.new as Message;
         setMessages(prev => [...prev, newMsg]);
       })
